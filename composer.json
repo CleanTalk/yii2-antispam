@@ -1,0 +1,27 @@
+{
+  "name": "cleantalk/yii2-antispam",
+  "description": "Anti-spam yii2 extension by CleanTalk with protection against spam bots and manual spam",
+  "keywords": [
+    "yii2",
+    "cleantalk",
+    "antispam"
+  ],
+  "type": "yii2-extension",
+  "require": {
+    "cleantalk/php-antispam": "~2.0.0"
+  },
+  "require-dev": {
+    "yiisoft/yii2": "~2.0.0",
+    "phpunit/phpunit": "~4.6.9"
+  },
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "psrustik",
+      "email": "psrustik@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {"cleantalk\\antispam\\": ""}
+  }
+}
