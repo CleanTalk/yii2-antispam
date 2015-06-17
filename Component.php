@@ -5,7 +5,7 @@ use Cleantalk;
 use CleantalkRequest;
 use InvalidArgumentException;
 use Yii;
-use yii\base\Component;
+use yii\base\Component as BaseComponent;
 use yii\base\InvalidConfigException;
 use yii\helpers\Json;
 
@@ -18,10 +18,10 @@ use yii\helpers\Json;
  * @copyright (C) 2015 Сleantalk team (http://cleantalk.org)
  * @license GNU/GPL: http://www.gnu.org/copyleft/gpl.html
  */
-class Api extends Component
+class Component extends BaseComponent
 {
     const AGENT_VERSION = 'yii2-2.0.0';
-    const FORM_SUBMIT_START_TIME = 'cleantalk_form_submit_start_time';
+    const KEY_SESSION_FORM_SUBMIT = 'ct_form_submit';
 
     /** @var string API key */
     public $apiKey;
@@ -106,19 +106,27 @@ class Api extends Component
 
     /**
      * Set begin time of submitting form
+     * @param string $id form id
      */
     public function startFormSubmitTime($id)
     {
-        Yii::$app->session->set(self::FORM_SUBMIT_START_TIME . $id, time());
+        Yii::$app->session->set(self::KEY_SESSION_FORM_SUBMIT . $id, time());
     }
 
     /**
-     * Get form submit time in seconds.
+     * Get form submit time in seconds
+     * @param string $id form id
      * @return int|null
      */
-    public function getFormSubmitTime($id)
+    public function calcFormSubmitTime($id = null, $clear = true)
     {
-        $startTime = Yii::$app->session->get(self::FORM_SUBMIT_START_TIME . $id);
+        if ($id === null) {
+            $id = Yii::$app->request->post('ct_formid');
+        }
+        $startTime = Yii::$app->session->get(self::KEY_SESSION_FORM_SUBMIT . $id);
+        if ($clear) {
+            Yii::$app->session->remove(self::KEY_SESSION_FORM_SUBMIT . $id);
+        }
         return $startTime > 0 ? time() - $startTime : null;
     }
 
@@ -128,8 +136,7 @@ class Api extends Component
      */
     public function isJavascriptEnable()
     {
-        $formJsCode = isset($_POST['ct_checkjs']) ? $_POST['ct_checkjs'] : null;
-        return $formJsCode == $this->getCheckJsCode() ? 1 : 0;
+        return Yii::$app->request->post('ct_checkjs') == $this->getCheckJsCode() ? 1 : 0;
     }
 
     /**
@@ -143,7 +150,7 @@ class Api extends Component
         $ctRequest->response_lang = $this->responseLang;
         $ctRequest->agent = self::AGENT_VERSION;
         $ctRequest->sender_ip = Yii::$app->request->getUserIP();
-        $ctRequest->submit_time = $this->getFormSubmitTime('');
+        $ctRequest->submit_time = $this->calcFormSubmitTime();
         $ctRequest->js_on = $this->isJavascriptEnable();
 
         $ctRequest->sender_info = Json::encode(

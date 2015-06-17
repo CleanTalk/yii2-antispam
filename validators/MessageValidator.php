@@ -21,7 +21,7 @@ class MessageValidator extends Validator
     public function validateAttribute($model, $attribute)
     {
         /**
-         * @var \cleantalk\antispam\Api $api
+         * @var \cleantalk\antispam\Component $api
          */
         $api = Yii::$app->get($this->apiComponentId);
         $email = $nick = '';

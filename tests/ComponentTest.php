@@ -1,7 +1,7 @@
 <?php
 namespace cleantalk\antispam\tests;
 
-use cleantalk\antispam\Api;
+use cleantalk\antispam\Component as CleantalkComponent;
 use CleantalkRequest;
 use CleantalkResponse;
 use InvalidArgumentException;
@@ -10,12 +10,12 @@ use ReflectionClass;
 use Yii;
 
 /**
- * @coversDefaultClass \cleantalk\antispam\Api
+ * @coversDefaultClass \cleantalk\antispam\Component
  */
-class ApiTest extends PHPUnit_Framework_TestCase
+class ComponentTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \cleantalk\antispam\Api
+     * @var \cleantalk\antispam\Component
      */
     protected $component;
 
@@ -24,7 +24,7 @@ class ApiTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->component = Yii::createObject(['class' => Api::className(), 'apiKey' => CLEANTALK_TEST_API_KEY]);
+        $this->component = Yii::createObject(['class' => CleantalkComponent::className(), 'apiKey' => CLEANTALK_TEST_API_KEY]);
     }
 
     /**
@@ -32,7 +32,7 @@ class ApiTest extends PHPUnit_Framework_TestCase
      */
     public function testInit()
     {
-        Yii::createObject(['class' => Api::className(), 'apiKey' => null]);
+        Yii::createObject(['class' => CleantalkComponent::className(), 'apiKey' => null]);
     }
 
     public function testIsAllowUser()
@@ -97,17 +97,19 @@ class ApiTest extends PHPUnit_Framework_TestCase
 
     public function testStartFormSubmitTime()
     {
-        // $this->component->startFormSubmitTime();
+        $this->component->startFormSubmitTime('');
+        sleep(1);
+        $time = $this->component->calcFormSubmitTime('');
+        $this->assertEquals(1, $time);
     }
 
 
     public function testIsJavascriptEnable()
     {
-        $_POST['ct_checkjs'] = $this->component->getCheckJsCode();
-
+        Yii::$app->request->setBodyParams(['ct_checkjs' => $this->component->getCheckJsCode()]);
         $this->assertEquals(1, $this->component->isJavascriptEnable());
 
-        unset($_POST['ct_checkjs']);
+        Yii::$app->request->setBodyParams([]);
         $this->assertEquals(0, $this->component->isJavascriptEnable());
     }
 
@@ -133,7 +135,7 @@ class ApiTest extends PHPUnit_Framework_TestCase
 
     protected function getSendRequestMock($response)
     {
-        $mock = $this->getMock(Api::className(), ['sendRequest'], [['apiKey' => CLEANTALK_TEST_API_KEY]]);
+        $mock = $this->getMock(CleantalkComponent::className(), ['sendRequest'], [['apiKey' => CLEANTALK_TEST_API_KEY]]);
         $mock->expects($this->once())
             ->method('sendRequest')
             ->will(

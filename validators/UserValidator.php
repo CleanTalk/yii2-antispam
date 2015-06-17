@@ -10,7 +10,7 @@ class UserValidator extends Validator
     public $nickNameAttribute;
 
     /** @var string CleanTalk application component ID */
-    public $apiComponentId = 'antispam';
+    public $apiComponentId = 'cleanTalk';
 
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class UserValidator extends Validator
     public function validateAttribute($model, $attribute)
     {
         /**
-         * @var \cleantalk\antispam\Api $api
+         * @var \cleantalk\antispam\Component $api
          */
         $api = Yii::$app->get($this->apiComponentId);
         $nick = '';
