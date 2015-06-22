@@ -4,6 +4,9 @@ namespace cleantalk\antispam\validators;
 use Yii;
 use yii\validators\Validator;
 
+/**
+ * Validates messages and posts contents.
+ */
 class MessageValidator extends Validator
 {
     /** @var string Email attribute name in model */

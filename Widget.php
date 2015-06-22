@@ -13,6 +13,9 @@ class Widget extends BaseWidget
     /** @var string hidden field id */
     protected $checkJsHtmlId;
 
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         parent::init();

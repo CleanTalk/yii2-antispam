@@ -4,13 +4,17 @@ namespace cleantalk\antispam\validators;
 use Yii;
 use yii\validators\Validator;
 
+/**
+ * Validates user registration (sign up for) email.
+ * Additional param is nickName.
+ */
 class UserValidator extends Validator
 {
     /** @var string Nickname attribute name in model */
     public $nickNameAttribute;
 
     /** @var string CleanTalk application component ID */
-    public $apiComponentId = 'cleanTalk';
+    public $apiComponentId = 'antispam';
 
     /**
      * @inheritdoc
