@@ -37,7 +37,7 @@ to the require section of your composer.json.
 'components'=>[
     ...
         'antispam' => [
-            'class' => 'cleantalk\antispam\Api',
+            'class' => 'cleantalk\antispam\Component',
             'apiKey' => 'Your API KEY',
         ]
     ...

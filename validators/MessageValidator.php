@@ -36,6 +36,9 @@ class MessageValidator extends Validator
         }
         list($valid, $comment) = $api->isAllowMessage($model->$attribute, $email, $nick);
         if (!$valid) {
+            if ($this->message !== null) {
+                $comment = $this->message;
+            }
             $this->addError($model, $attribute, $comment);
         }
     }

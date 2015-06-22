@@ -31,6 +31,9 @@ class UserValidator extends Validator
         }
         list($valid, $comment) = $api->isAllowUser($model->$attribute, $nick);
         if (!$valid) {
+            if ($this->message !== null) {
+                $comment = $this->message;
+            }
             $this->addError($model, $attribute, $comment);
         }
     }
