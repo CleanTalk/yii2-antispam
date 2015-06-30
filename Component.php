@@ -64,10 +64,6 @@ class Component extends BaseComponent
 
         $ctResult = $this->sendRequest($ctRequest, 'isAllowUser');
 
-        if ($ctResult->inactive == 1) {
-            $this->log(sprintf('Need admin approval for "isAllowUser": %s', $ctResult->comment));
-        }
-
         return [$ctResult->allow == 1, $ctResult->comment];
     }
 
@@ -86,10 +82,6 @@ class Component extends BaseComponent
         $ctRequest->sender_nickname = $nickName;
 
         $ctResult = $this->sendRequest($ctRequest, 'isAllowMessage');
-
-        if ($ctResult->inactive == 1) {
-            $this->log(sprintf('Need admin approval for "isAllowMessage": %s', $ctResult->comment));
-        }
 
         return [$ctResult->allow == 1, $ctResult->comment];
     }
@@ -178,17 +170,11 @@ class Component extends BaseComponent
         }
         Yii::trace('Sending request to cleantalk:' . var_export($request, true), __METHOD__);
 
-        return $ct->$method($request);
-    }
+        $response = $ct->$method($request);
 
-    /**
-     * @param string $message
-     */
-    protected function log($message)
-    {
         if ($this->enableLog) {
-            Yii::info($message, __CLASS__);
+            Yii::info(sprintf('Cleantalk response is allow=%d, inactive=%d, comment=%s', $response->allow, $response->inactive, $response->comment), __METHOD__);
         }
+        return $response;
     }
-
 }
