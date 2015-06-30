@@ -116,3 +116,4 @@ GNU General Public License
 
  * http://cleantalk.org/
  * https://github.com/CleanTalk/yii2-antispam
+
