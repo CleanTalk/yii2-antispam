@@ -176,6 +176,7 @@ class Component extends BaseComponent
         if ($method != 'isAllowMessage' && $method != 'isAllowUser') {
             throw new InvalidArgumentException('Method unknown');
         }
+        Yii::trace('Sending request to cleantalk:' . var_export($request, true), __METHOD__);
 
         return $ct->$method($request);
     }
@@ -186,7 +187,7 @@ class Component extends BaseComponent
     protected function log($message)
     {
         if ($this->enableLog) {
-            Yii::info($message, 'ext.cleantalk');
+            Yii::info($message, __CLASS__);
         }
     }
 
