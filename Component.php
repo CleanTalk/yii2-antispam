@@ -108,6 +108,7 @@ class Component extends BaseComponent
     /**
      * Get form submit time in seconds
      * @param string $id form id
+     * @param boolean $clear clear value in session
      * @return int|null
      */
     public function calcFormSubmitTime($id = null, $clear = true)

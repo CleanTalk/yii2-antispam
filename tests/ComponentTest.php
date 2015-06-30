@@ -98,9 +98,9 @@ class ComponentTest extends PHPUnit_Framework_TestCase
     public function testStartFormSubmitTime()
     {
         $this->component->startFormSubmitTime('');
-        sleep(1);
+        sleep(2);
         $time = $this->component->calcFormSubmitTime('');
-        $this->assertEquals(1, $time);
+        $this->assertGreaterThanOrEqual(1, $time);
     }
 
 
