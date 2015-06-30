@@ -60,7 +60,7 @@ class FakeModel extends Model
     public function rules()
     {
         return [
-            ['message', MessageValidator::class]
+            ['message', MessageValidator::className()]
         ];
     }
 }
