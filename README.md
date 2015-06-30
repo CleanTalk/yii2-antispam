@@ -28,7 +28,7 @@ to the require section of your composer.json.
 
 ##Usage
 
-1) Get access key on http://cleantalk.org/register?platform=yii2
+1) Get access key on https://cleantalk.org/register?platform=yii2
 
 2) Open your application configuration in protected/config/web.php and modify components section:
 
