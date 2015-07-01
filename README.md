@@ -4,6 +4,8 @@ No Captcha, no questions, no counting animals, no puzzles, no math.
 
 [![Build Status](https://travis-ci.org/CleanTalk/yii2-antispam.svg)](https://travis-ci.org/cleantalk/yii2-antispam)
 
+[![Latest Stable Version](https://poser.pugx.org/cleantalk/yii2-antispam/v/stable)](https://packagist.org/packages/cleantalk/yii2-antispam) [![Total Downloads](https://poser.pugx.org/cleantalk/yii2-antispam/downloads)](https://packagist.org/packages/cleantalk/yii2-antispam) [![Latest Unstable Version](https://poser.pugx.org/cleantalk/yii2-antispam/v/unstable)](https://packagist.org/packages/cleantalk/yii2-antispam) [![License](https://poser.pugx.org/cleantalk/yii2-antispam/license)](https://packagist.org/packages/cleantalk/yii2-antispam)
+
 ##Requirements
 
 Yii 2.0 or above
