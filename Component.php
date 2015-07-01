@@ -29,7 +29,10 @@ class Component extends BaseComponent
     /** @var string API URL */
     public $apiUrl = 'http://moderate.cleantalk.ru';
 
-    /** @var string API response lang en|ru */
+    /**
+     * @deprecated Use setting in https://cleantalk.org/my/service?action=edit
+     * @var string API response lang en|ru
+     */
     public $responseLang;
 
     /** @var bool enable logging */
@@ -44,9 +47,6 @@ class Component extends BaseComponent
         parent::init();
         if (is_null($this->apiKey)) {
             throw new InvalidConfigException('CleanTalkApi configuration must have "apiKey" value');
-        }
-        if (is_null($this->responseLang)) {
-            $this->responseLang = isset(Yii::$app->language) ? substr(Yii::$app->language, 0, 2) : 'en';
         }
     }
 
@@ -140,7 +140,6 @@ class Component extends BaseComponent
     {
         $ctRequest = new CleantalkRequest();
         $ctRequest->auth_key = $this->apiKey;
-        $ctRequest->response_lang = $this->responseLang;
         $ctRequest->agent = self::AGENT_VERSION;
         $ctRequest->sender_ip = Yii::$app->request->getUserIP();
         $ctRequest->submit_time = $this->calcFormSubmitTime();
@@ -150,7 +149,6 @@ class Component extends BaseComponent
             [
                 'REFFERRER' => Yii::$app->request->getReferrer(),
                 'USER_AGENT' => Yii::$app->request->getUserAgent(),
-                'cms_lang' => $this->responseLang,
             ]
         );
         return $ctRequest;
