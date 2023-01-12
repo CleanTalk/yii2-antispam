@@ -6,9 +6,10 @@ No Captcha, no questions, no counting animals, no puzzles, no math.
 
 
 
-##Requirements
+## Requirements
 
-Yii 2.0 or above
+* Yii 2.0 or above
+* CleanTalk account https://cleantalk.org/register?product=anti-spam
 
 ##Installation
 
