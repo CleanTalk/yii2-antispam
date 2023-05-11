@@ -8,20 +8,40 @@
   ],
   "type": "yii2-extension",
   "require": {
-    "cleantalk/php-antispam": "~2.0.0"
+    "php":"^7.4|^8.0",
+    "cleantalk/php-antispam": "~2.6.0"
   },
   "require-dev": {
-    "yiisoft/yii2": "~2.0.0",
-    "phpunit/phpunit": "~4.6.9"
+    "yiisoft/yii2": "^2.0.46",
+    "phpunit/phpunit": "^9.5"
   },
   "license": "GPL-3.0",
   "authors": [
     {
       "name": "psrustik",
       "email": "psrustik@gmail.com"
+    },
+    {
+      "name": "Dana Luther",
+      "email": "dana.luther@gmail.com"
     }
   ],
+  "config": {
+    "platform": {
+      "php": "8.0.23",
+      "ext-mcrypt": "8.0"
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  },
   "autoload": {
     "psr-4": {"cleantalk\\antispam\\": ""}
-  }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
 }
