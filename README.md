@@ -117,5 +117,5 @@ GNU General Public License
 
 ##Resources
 
- * http://cleantalk.org/
+ * https://cleantalk.org/
  * https://github.com/CleanTalk/yii2-antispam

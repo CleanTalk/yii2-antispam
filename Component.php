@@ -14,8 +14,8 @@ use yii\helpers\Json;
  * Required set apiKey property.
  *
  * @version 1.0.0
- * @author CleanTalk (welcome@cleantalk.ru)
- * @copyright (C) 2015 Сleantalk team (http://cleantalk.org)
+ * @author CleanTalk (welcome@cleantalk.org)
+ * @copyright (C) 2015 Сleantalk team (https://cleantalk.org)
  * @license GNU/GPL: http://www.gnu.org/copyleft/gpl.html
  */
 class Component extends BaseComponent
@@ -27,7 +27,7 @@ class Component extends BaseComponent
     public $apiKey;
 
     /** @var string API URL */
-    public $apiUrl = 'http://moderate.cleantalk.ru';
+    public $apiUrl = 'https://moderate.cleantalk.org';
 
     /**
      * @deprecated Use setting in https://cleantalk.org/my/service?action=edit
