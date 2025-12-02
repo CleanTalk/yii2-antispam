@@ -20,7 +20,7 @@ use yii\helpers\Json;
  */
 class Component extends BaseComponent
 {
-    const AGENT_VERSION = 'yii2-1.0.0';
+    const AGENT_VERSION = 'yii2-1.1.0';
     const KEY_SESSION_FORM_SUBMIT = 'ct_form_submit';
 
     /** @var string API key */
