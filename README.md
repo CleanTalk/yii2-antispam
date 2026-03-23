@@ -23,7 +23,7 @@ Invisible protection from spam bots on contact, comment, and registration forms 
 * CleanTalk account https://cleantalk.org/register?product=anti-spam
 
 
-##Installation
+## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
