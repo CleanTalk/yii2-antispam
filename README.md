@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/CleanTalk/yii2-antispam.svg)](https://travis-ci.org/cleantalk/yii2-antispam)
+
 # Spam Bot Protection for Yii2 Forms — reCAPTCHA Alternative.
 
 Anti-spam extension for the Yii2 framework powered by the CleanTalk API.  
@@ -10,8 +12,7 @@ Invisible protection from spam bots on contact, comment, and registration forms 
 - Easy integration into Yii2 forms and models
 - Supports contact forms, comment forms, and registration forms
 
-
-[![Build Status](https://travis-ci.org/CleanTalk/yii2-antispam.svg)](https://travis-ci.org/cleantalk/yii2-antispam)
+If you find this project useful, please consider starring ⭐ it on GitHub — it helps us grow and support development!
 
 ### Websites that trust CleanTalk!
 
